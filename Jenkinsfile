@@ -4,8 +4,10 @@ pipeline {
 	  stages {
 		//Run the maven build
 		stage('Build') {
+		   steps {
 			sh 'mvn test'
-			echo 'Building Stage...'
+			echo 'Testing Stage...'
+		  }
 		}
 		stage('Test') {
 		  steps {
