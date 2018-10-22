@@ -4,9 +4,8 @@ pipeline {
 	  stages {
 		//Run the maven build
 		stage('Build') {
-		  steps {
+			sh 'mvn test'
 			echo 'Building Stage...'
-		  }
 		}
 		stage('Test') {
 		  steps {
