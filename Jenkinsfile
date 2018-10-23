@@ -5,24 +5,15 @@ pipeline {
 		//Run the maven build
 		stage('Build') {
 		   steps {
-			checkout scm
 			echo 'Testing Stage...'
-			   // -- Compilando
-			   echo 'Compilando aplicación'
-			   sh 'mvn clean compile'
+			sh 'mvn clean package'
 		  }
 		}
-		stage('Test') {
-		  steps {
-			echo 'Testing Stage...'
-		        echo 'Ejecutando tests'
-			sh 'mvn verify'
+		  post{
+			  success{
+			  echo 'Now archiving...'
+				  archiveArtifacts artifacts: '**/target/*.war'
+			  }
 		  }
-		}
-		stage('Deploy') {
-		  steps {
-			echo 'Deploying Stage...'
-		  }
-		}
 	  }
 }	
