@@ -17,7 +17,8 @@ pipeline {
 		}
 		  stage('Deploy to Dev'){
 			  steps{
-			  	build job: 'Deploy-To-Dev'
+			  //	build job: 'Deploy-To-Dev'
+				  echo 'Code deployed to DEV'
 			  }
 		  }
 		  stage('Deploy to Prod'){
@@ -25,7 +26,7 @@ pipeline {
 				  timeout(time:5, unit:'DAYS'){
 				  	input message:'Approve PRODUCTION Deployment?'
 				  }				 
-				  build job: 'Deploy-To-Prod'
+				//  build job: 'Deploy-To-Prod'
 			  }
 			  post{
 				  success{
